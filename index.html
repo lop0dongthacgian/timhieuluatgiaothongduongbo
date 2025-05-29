@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tìm hiểu Luật Giao thông Đường bộ</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="audio-indicator" id="audioIndicator">🔇 Nhạc: Tắt</div>
+    
+    <div class="container">
+        <div id="mainMenu">
+            <div class="header">
+                <h1>🚗 Luật Giao thông Đường bộ</h1>
+                <p>Ứng dụng học tập và kiểm tra kiến thức luật giao thông theo Luật số 35/2024/QH15</p>
+            </div>
+
+            <div class="controls">
+                <button class="control-btn" onclick="toggleMusic()">🎵 Bật/Tắt nhạc</button>
+                <button class="control-btn exit" onclick="exitApp()">🚪 Thoát ứng dụng</button>
+            </div>
+
+            <div class="nav-menu">
+                <div class="nav-item" onclick="showSection('guide')">
+                    <span class="icon">📖</span>
+                    <h3>Hướng dẫn sử dụng</h3>
+                    <p>Tìm hiểu cách sử dụng ứng dụng một cách hiệu quả nhất</p>
+                </div>
+
+                <div class="nav-item" onclick="showSection('learning')">
+                    <span class="icon">🎓</span>
+                    <h3>Tìm hiểu</h3>
+                    <p>Học các quy định quan trọng trong luật giao thông đường bộ</p>
+                </div>
+
+                <div class="nav-item" onclick="showSection('chat')">
+                    <span class="icon">🤖</span>
+                    <h3>Chat AI</h3>
+                    <p>Hỏi đáp với AI về các quy định luật giao thông</p>
+                </div>
+
+                <div class="nav-item" onclick="showSection('quiz')">
+                    <span class="icon">🧠</span>
+                    <h3>100 câu hỏi trắc nghiệm</h3>
+                    <p>Kiểm tra kiến thức với 100 câu hỏi thực tế</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="guideSection">
+            <div class="section-header">
+                <h2 class="section-title">📖 Hướng dẫn sử dụng ứng dụng</h2>
+                <button class="back-btn" onclick="showMainMenu()">← Quay lại</button>
+            </div>
+            <div class="guide-content">
+                <div class="guide-section">
+                    <h4>🎯 Mục đích ứng dụng</h4>
+                    <p>Ứng dụng giúp bạn học tập và nắm vững các quy định trong Luật Giao thông Đường bộ số 35/2024/QH15, hỗ trợ ôn tập cho kỳ thi lý thuyết lái xe và nâng cao ý thức chấp hành luật giao thông.</p>
+                </div>
+                
+                <div class="guide-section">
+                    <h4>📚 Cách sử dụng mục "Tìm hiểu"</h4>
+                    <p>Mục này cung cấp kiến thức cơ bản và nâng cao về luật giao thông. Bạn có thể đọc từng chương một cách có hệ thống, ghi chú những điểm quan trọng để ôn tập sau.</p>
+                </div>
+                
+                <div class="guide-section">
+                    <h4>🤖 Sử dụng Chat AI</h4>
+                    <p>Gõ câu hỏi về luật giao thông và AI sẽ trả lời dựa trên nội dung luật. Ví dụ: "Tốc độ tối đa trong khu dân cư là bao nhiêu?" hoặc "Mức phạt cho vi phạm vượt đèn đỏ?"</p>
+                </div>
+                
+                <div class="guide-section">
+                    <h4>🧠 Làm bài trắc nghiệm</h4>
+                    <p>100 câu hỏi được chia thành nhiều chủ đề. Chọn đáp án và xem kết quả ngay lập tức: màu xanh là đúng, màu hồng là sai. Có thể làm lại nhiều lần để ghi nhớ tốt hơn.</p>
+                </div>
+                
+                <div class="guide-section">
+                    <h4>🎵 Điều khiển nhạc nền</h4>
+                    <p>Nhấn nút "Bật/Tắt nhạc" để bật/tắt nhạc nền. Chỉ báo ở góc trên bên phải sẽ hiển thị trạng thái nhạc hiện tại.</p>
+                </div>
+                
+                <div class="guide-section">
+                    <h4>💡 Mẹo học tập hiệu quả</h4>
+                    <p>1. Đọc kỹ phần "Tìm hiểu" trước khi làm bài trắc nghiệm<br>
+                    2. Sử dụng Chat AI để làm rõ những điểm chưa hiểu<br>
+                    3. Làm bài trắc nghiệm nhiều lần để ghi nhớ lâu<br>
+                    4. Ghi chú những câu trả lời sai để ôn tập lại</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="learningSection">
+            <div class="section-header">
+                <h2 class="section-title">🎓 Tìm hiểu Luật Giao thông Đường bộ</h2>
+                <button class="back-btn" onclick="showMainMenu()">← Quay lại</button>
+            </div>
+            <div class="learning-content">
+                <h3>Chương I: Những quy định chung</h3>
+                <p><strong>Điều 1. Phạm vi điều chỉnh:</strong> Luật này quy định về quy tắc giao thông đường bộ; phương tiện giao thông đường bộ và người điều khiển phương tiện; đường bộ và hoạt động bảo đảm trật tự, an toàn giao thông đường bộ; xử phạt vi phạm hành chính trong lĩnh vực giao thông đường bộ.</p>
+                
+                <p><strong>Điều 2. Đối tượng áp dụng:</strong> Luật này áp dụng đối với cơ quan, tổ chức, cá nhân có liên quan đến hoạt động giao thông đường bộ trên lãnh thổ Việt Nam.</p>
+
+                <h3>Chương II: Quy tắc giao thông đường bộ</h3>
+                <p><strong>Nguyên tắc cơ bản:</strong></p>
+                <ul>
+                    <li>Phương tiện tham gia giao thông đường bộ phải đi bên phải theo chiều di chuyển</li>
+                    <li>Tại nơi có vạch kẻ đường, người và phương tiện tham gia giao thông phải đi đúng phần đường quy định</li>
+                    <li>Nhường đường cho xe ưu tiên, xe được quyền ưu tiên</li>
+                    <li>Tuân thủ tín hiệu của đèn giao thông, biển báo, vạch kẻ đường</li>
+                </ul>
+
+                <h3>Tốc độ tối đa cho phép</h3>
+                <p><strong>Trong khu dân cư:</strong></p>
+                <ul>
+                    <li>Xe máy, xe gắn máy: 50 km/h</li>
+                    <li>Ô tô con: 50 km/h</li>
+                    <li>Ô tô tải, xe khách: 50 km/h</li>
+                </ul>
+
+                <p><strong>Trên đường quốc lộ:</strong></p>
+                <ul>
+                    <li>Xe máy: 60 km/h</li>
+                    <li>Ô tô con: 90 km/h</li>
+                    <li>Ô tô tải: 80 km/h</li>
+                    <li>Xe khách: 80 km/h</li>
+                </ul>
+
+                <p><strong>Trên đường cao tốc:</strong></p>
+                <ul>
+                    <li>Ô tô con: 120 km/h</li>
+                    <li>Ô tô tải, xe khách: 90 km/h</li>
+                    <li>Xe máy không được phép lưu thông</li>
+                </ul>
+
+                <h3>Các lỗi vi phạm thường gặp và mức phạt</h3>
+                <p><strong>Vi phạm tín hiệu đèn giao thông:</strong></p>
+                <ul>
+                    <li>Xe máy: 800.000 - 1.000.000 đồng</li>
+                    <li>Ô tô: 4.000.000 - 6.000.000 đồng</li>
+                    <li>Bị tước bằng lái từ 2-4 tháng</li>
+                </ul>
+
+                <p><strong>Vi phạm nồng độ cồn:</strong></p>
+                <ul>
+                    <li>Xe máy (0,25-0,5mg/lít khí thở): 2.000.000 - 3.000.000 đồng</li>
+                    <li>Xe máy (trên 0,5mg/lít khí thở): 6.000.000 - 8.000.000 đồng</li>
+                    <li>Ô tô: 16.000.000 - 18.000.000 đồng</li>
+                    <li>Tước bằng lái 10-12 tháng</li>
+                </ul>
+
+                <h3>Giấy tờ bắt buộc phải mang theo</h3>
+                <p><strong>Đối với xe máy:</strong></p>
+                <ul>
+                    <li>Giấy phép lái xe</li>
+                    <li>Đăng ký xe</li>
+                    <li>Giấy chứng nhận bảo hiểm trách nhiệm dân sự</li>
+                </ul>
+
+                <p><strong>Đối với ô tô:</strong></p>
+                <ul>
+                    <li>Giấy phép lái xe</li>
+                    <li>Đăng ký xe</li>
+                    <li>Giấy chứng nhận bảo hiểm trách nhiệm dân sự</li>
+                    <li>Giấy chứng nhận kiểm định an toàn kỹ thuật và bảo vệ môi trường</li>
+                </ul>
+
+                <h3>Quy định về mũ bảo hiểm</h3>
+                <p>Người điều khiển và người ngồi trên xe mô tô, xe gắn máy phải đội mũ bảo hiểm có cài quai đúng quy cách. Mũ bảo hiểm phải đạt tiêu chuẩn chất lượng theo quy định.</p>
+
+                <h3>Quy định về đỗ xe</h3>
+                <p><strong>Các nơi cấm đỗ xe:</strong></p>
+                <ul>
+                    <li>Trên cầu, gầm cầu, hầm đường bộ</li>
+                    <li>Đường cong, đầu dốc, chân dốc</li>
+                    <li>Trong phạm vi 5m từ mép cầu, mép đường giao nhau</li>
+                    <li>Trước cổng cơ quan, bệnh viện, trường học</li>
+                    <li>Nơi có biển báo cấm đỗ xe</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section" id="chatSection">
+            <div class="section-header">
+                <h2 class="section-title">🤖 Chat AI - Hỏi đáp về Luật Giao thông</h2>
+                <button class="back-btn" onclick="showMainMenu()">← Quay lại</button>
+            </div>
+            <div class="chat-container">
+                <div class="chat-messages" id="chatMessages">
+                    <div class="message bot">
+                        <strong>AI Assistant:</strong> Xin chào! Tôi có thể giúp bạn trả lời các câu hỏi về Luật Giao thông Đường bộ số 35/2024/QH15. Hãy đặt câu hỏi cho tôi!
+                    </div>
+                </div>
+                <div class="chat-input-container">
+                    <input type="text" class="chat-input" id="chatInput" placeholder="Nhập câu hỏi của bạn về luật giao thông..." onkeypress="handleChatKeypress(event)">
+                    <button class="chat-send" onclick="sendMessage()">Gửi</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="quizSection">
+            <div class="section-header">
+                <h2 class="section-title">🧠 100 câu hỏi trắc nghiệm</h2>
+                <button class="back-btn" onclick="showMainMenu()">← Quay lại</button>
+            </div>
+            <div class="quiz-container">
+                <div class="quiz-header">
+                    <h3>Kiểm tra kiến thức Luật Giao thông Đường bộ</h3>
+                    <div class="quiz-progress">
+                        <span>Câu <span id="currentQuestion">1</span>/<span id="totalQuestions">0</span></span>
+                        <span>Điểm: <span id="score">0</span></span>
+                    </div>
+                </div>
+                
+                <div class="question-card">
+                    <div class="question-text" id="questionText">Đang tải câu hỏi...</div>
+                    <div id="answerOptions"></div>
+                </div>
+                
+                <div class="quiz-controls">
+                    <button class="quiz-btn" id="prevBtn" onclick="previousQuestion()" disabled>← Câu trước</button>
+                    <button class="quiz-btn" onclick="resetQuiz()">🔄 Làm lại</button>
+                    <button class="quiz-btn" id="nextBtn" onclick="nextQuestion()">Câu tiếp →</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <audio id="backgroundMusic" loop autoplay> {/*Đã thêm autoplay */}
+        <source src="nhac.mp3" type="audio/mpeg">
+        Trình duyệt của bạn không hỗ trợ audio HTML5.
+    </audio>
+
+    <footer class="app-footer">
+        © Tổ công nghệ số cộng đồng Trung Bình A3 - Thạc Gián, Thanh Khê, Đà Nẵng
+    </footer>
+
+    <script src="js/questions.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
