@@ -10,11 +10,15 @@ function attemptAutoplay() {
         audio.play().then(() => {
             musicPlaying = true;
             audioIndicator.textContent = '🎵 Nhạc: Bật';
-            console.log("Nhạc nền đã tự động phát.");
         }).catch(error => {
-            musicPlaying = false;
-            audioIndicator.textContent = '🔇 Nhạc: Tắt';
-            console.warn("Không thể tự động phát nhạc nền: ", error.message, ". Trình duyệt có thể yêu cầu tương tác người dùng trước.");
+            console.warn("Không thể tự động phát nhạc: ", error.message);
+            // Thử phát lại khi người dùng tương tác
+            document.body.addEventListener('click', () => {
+                audio.play().then(() => {
+                    musicPlaying = true;
+                    audioIndicator.textContent = '🎵 Nhạc: Bật';
+                });
+            }, { once: true });
         });
     }
 }
@@ -29,7 +33,7 @@ function toggleMusic() {
         audio.play().then(() => {
             musicPlaying = true;
             audioIndicator.textContent = '🎵 Nhạc: Bật';
-        }).catch(error => { // Xử lý lỗi nếu người dùng nhấn nút nhưng vẫn không phát được
+        }).catch(error => {
             musicPlaying = false;
             audioIndicator.textContent = '🔇 Nhạc: Tắt';
             console.error("Lỗi khi phát nhạc: ", error.message);
@@ -40,7 +44,7 @@ function toggleMusic() {
 
 function exitApp() {
     if (audio) {
-        audio.pause(); // Tắt nhạc trước khi thoát
+        audio.pause();
         musicPlaying = false;
         audioIndicator.textContent = '🔇 Nhạc: Tắt';
     }
@@ -54,10 +58,9 @@ function exitApp() {
 const mainMenu = document.getElementById('mainMenu');
 const guideSection = document.getElementById('guideSection');
 const learningSection = document.getElementById('learningSection');
-const chatSection = document.getElementById('chatSection');
 const quizSection = document.getElementById('quizSection');
 
-const allContentSections = [guideSection, learningSection, chatSection, quizSection];
+const allContentSections = [guideSection, learningSection, quizSection];
 
 function showSection(sectionIdPart) {
     if (mainMenu) {
@@ -74,7 +77,6 @@ function showSection(sectionIdPart) {
     let targetSection;
     if (sectionIdPart === 'guide' && guideSection) targetSection = guideSection;
     else if (sectionIdPart === 'learning' && learningSection) targetSection = learningSection;
-    else if (sectionIdPart === 'chat' && chatSection) targetSection = chatSection;
     else if (sectionIdPart === 'quiz' && quizSection) {
         targetSection = quizSection;
         if (typeof quizData !== 'undefined' && quizData.length > 0 && (currentQuestionIndex === 0 || quizFinished)) {
@@ -93,6 +95,10 @@ function showSection(sectionIdPart) {
     }
 }
 
+function openAIChat() {
+    window.open('https://giao-thong-ai-chat.vercel.app/', '_blank');
+}
+
 function showMainMenu() {
     allContentSections.forEach(section => {
         if (section) {
@@ -102,158 +108,6 @@ function showMainMenu() {
     });
     if (mainMenu) {
         mainMenu.style.display = 'block';
-    }
-}
-
-// Chat AI - Basic Knowledge Base (Dựa trên mục "Tìm hiểu")
-const knowledgeBase = [
-    {
-        keywords: ["phạm vi điều chỉnh", "luật này quy định", "điều 1"],
-        answer: "Luật Giao thông Đường bộ (GTĐB) số 35/2024/QH15 quy định về quy tắc giao thông đường bộ; phương tiện giao thông đường bộ và người điều khiển phương tiện; đường bộ và hoạt động bảo đảm trật tự, an toàn giao thông đường bộ; xử phạt vi phạm hành chính trong lĩnh vực giao thông đường bộ."
-    },
-    {
-        keywords: ["đối tượng áp dụng", "luật này áp dụng", "điều 2"],
-        answer: "Luật GTĐB số 35/2024/QH15 áp dụng đối với cơ quan, tổ chức, cá nhân có liên quan đến hoạt động giao thông đường bộ trên lãnh thổ Việt Nam."
-    },
-    {
-        keywords: ["nguyên tắc cơ bản", "quy tắc chung"],
-        answer: "Nguyên tắc cơ bản khi tham gia giao thông: đi bên phải theo chiều di chuyển, đi đúng phần đường quy định, nhường đường cho xe ưu tiên, tuân thủ tín hiệu đèn, biển báo, vạch kẻ đường."
-    },
-    {
-        keywords: ["tốc độ tối đa", "khu dân cư", "xe máy", "xe gắn máy"],
-        answer: "Trong khu dân cư, tốc độ tối đa cho xe máy, xe gắn máy là 50 km/h."
-    },
-    {
-        keywords: ["tốc độ tối đa", "khu dân cư", "ô tô con"],
-        answer: "Trong khu dân cư, tốc độ tối đa cho ô tô con là 50 km/h."
-    },
-    {
-        keywords: ["tốc độ tối đa", "khu dân cư", "ô tô tải", "xe khách"],
-        answer: "Trong khu dân cư, tốc độ tối đa cho ô tô tải, xe khách là 50 km/h."
-    },
-    {
-        keywords: ["tốc độ tối đa", "quốc lộ", "xe máy"],
-        answer: "Trên đường quốc lộ (ngoài khu dân cư), tốc độ tối đa cho xe máy là 60 km/h."
-    },
-    {
-        keywords: ["tốc độ tối đa", "quốc lộ", "ô tô con"],
-        answer: "Trên đường quốc lộ (ngoài khu dân cư), tốc độ tối đa cho ô tô con là 90 km/h."
-    },
-    {
-        keywords: ["tốc độ tối đa", "quốc lộ", "ô tô tải", "xe khách"],
-        answer: "Trên đường quốc lộ (ngoài khu dân cư), tốc độ tối đa cho ô tô tải và xe khách là 80 km/h."
-    },
-    {
-        keywords: ["tốc độ tối đa", "cao tốc", "ô tô con"],
-        answer: "Trên đường cao tốc, tốc độ tối đa cho ô tô con là 120 km/h (trừ khi có biển báo khác)."
-    },
-    {
-        keywords: ["tốc độ tối đa", "cao tốc", "ô tô tải", "xe khách"],
-        answer: "Trên đường cao tốc, tốc độ tối đa cho ô tô tải và xe khách là 90 km/h (trừ khi có biển báo khác)."
-    },
-    {
-        keywords: ["xe máy", "cao tốc", "được đi không"],
-        answer: "Xe máy không được phép lưu thông trên đường cao tốc."
-    },
-    {
-        keywords: ["phạt", "đèn giao thông", "đèn đỏ", "xe máy"],
-        answer: "Vi phạm tín hiệu đèn giao thông đối với xe máy: phạt tiền từ 800.000 - 1.000.000 đồng, tước bằng lái từ 2-4 tháng."
-    },
-    {
-        keywords: ["phạt", "đèn giao thông", "đèn đỏ", "ô tô"],
-        answer: "Vi phạm tín hiệu đèn giao thông đối với ô tô: phạt tiền từ 4.000.000 - 6.000.000 đồng, tước bằng lái từ 2-4 tháng."
-    },
-    {
-        keywords: ["phạt", "nồng độ cồn", "xe máy", "0,25", "0.25"],
-        answer: "Vi phạm nồng độ cồn xe máy (0,25-0,5mg/lít khí thở): phạt 2.000.000 - 3.000.000 đồng, tước bằng lái 10-12 tháng."
-    },
-    {
-        keywords: ["phạt", "nồng độ cồn", "xe máy", "trên 0,5", "trên 0.5"],
-        answer: "Vi phạm nồng độ cồn xe máy (trên 0,5mg/lít khí thở): phạt 6.000.000 - 8.000.000 đồng, tước bằng lái 10-12 tháng."
-    },
-    {
-        keywords: ["phạt", "nồng độ cồn", "ô tô"],
-        answer: "Vi phạm nồng độ cồn ô tô (mức cao): phạt 16.000.000 - 18.000.000 đồng, tước bằng lái 10-12 tháng. (Lưu ý: mức phạt có thể cao hơn tùy nồng độ cụ thể)."
-    },
-    {
-        keywords: ["giấy tờ", "bắt buộc", "mang theo", "xe máy"],
-        answer: "Giấy tờ bắt buộc mang theo đối với xe máy: Giấy phép lái xe, Đăng ký xe, Giấy chứng nhận bảo hiểm trách nhiệm dân sự."
-    },
-    {
-        keywords: ["giấy tờ", "bắt buộc", "mang theo", "ô tô"],
-        answer: "Giấy tờ bắt buộc mang theo đối với ô tô: Giấy phép lái xe, Đăng ký xe, Giấy chứng nhận bảo hiểm trách nhiệm dân sự, Giấy chứng nhận kiểm định an toàn kỹ thuật và bảo vệ môi trường."
-    },
-    {
-        keywords: ["mũ bảo hiểm", "quy định"],
-        answer: "Người điều khiển và người ngồi trên xe mô tô, xe gắn máy phải đội mũ bảo hiểm có cài quai đúng quy cách. Mũ phải đạt tiêu chuẩn chất lượng."
-    },
-    {
-        keywords: ["cấm đỗ xe", "nơi nào cấm đỗ"],
-        answer: "Các nơi cấm đỗ xe: Trên cầu, gầm cầu, hầm đường bộ; Đường cong, đầu dốc, chân dốc; Trong phạm vi 5m từ mép cầu/đường giao nhau; Trước cổng cơ quan, bệnh viện, trường học; Nơi có biển báo cấm đỗ xe."
-    },
-    {
-        keywords: ["xin chào", "hello", "chào bạn"],
-        answer: "Xin chào! Tôi là trợ lý AI về Luật Giao thông Đường bộ. Bạn có câu hỏi nào không?"
-    }
-];
-
-function getAIResponse(userInput) {
-    const lowerInput = userInput.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""); // Chuẩn hóa, bỏ dấu tiếng Việt
-    let bestMatch = { score: 0, answer: "Xin lỗi, tôi chưa được huấn luyện về câu hỏi này. Bạn có thể tham khảo mục 'Tìm hiểu' hoặc hỏi một cách cụ thể hơn." };
-
-    knowledgeBase.forEach(item => {
-        let currentScore = 0;
-        item.keywords.forEach(keyword => {
-            const normalizedKeyword = keyword.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-            if (lowerInput.includes(normalizedKeyword)) {
-                currentScore++;
-            }
-        });
-        if (currentScore > bestMatch.score && currentScore > 0) {
-            bestMatch = { score: currentScore, answer: item.answer };
-        }
-    });
-     // Nếu không có keyword nào khớp nhưng người dùng hỏi "tốc độ" chung chung
-    if (bestMatch.score === 0 && lowerInput.includes("toc do")) {
-        return "Bạn muốn hỏi về tốc độ tối đa cho loại xe nào và ở khu vực nào (khu dân cư, quốc lộ, cao tốc)? Ví dụ: 'tốc độ tối đa xe máy trong khu dân cư'";
-    }
-    if (bestMatch.score === 0 && lowerInput.includes("muc phat") || lowerInput.includes("bi phat")) {
-        return "Bạn muốn hỏi về mức phạt cho lỗi vi phạm nào cụ thể? Ví dụ: 'mức phạt vượt đèn đỏ xe máy'";
-    }
-
-    return bestMatch.answer;
-}
-
-
-function sendMessage() {
-    const chatInput = document.getElementById('chatInput');
-    const chatMessages = document.getElementById('chatMessages');
-    const messageText = chatInput.value.trim();
-
-    if (messageText) {
-        const userMessageDiv = document.createElement('div');
-        userMessageDiv.classList.add('message', 'user');
-        userMessageDiv.textContent = messageText;
-        chatMessages.appendChild(userMessageDiv);
-
-        const aiResponseText = getAIResponse(messageText);
-
-        setTimeout(() => {
-            const botMessageDiv = document.createElement('div');
-            botMessageDiv.classList.add('message', 'bot');
-            botMessageDiv.innerHTML = `<strong>AI Assistant:</strong> ${aiResponseText}`;
-            chatMessages.appendChild(botMessageDiv);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }, 500);
-
-        chatInput.value = '';
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-}
-
-function handleChatKeypress(event) {
-    if (event.key === 'Enter') {
-        sendMessage();
     }
 }
 
