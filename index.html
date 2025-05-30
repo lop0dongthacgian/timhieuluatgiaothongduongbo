@@ -1,19 +1,19 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tìm hiểu Luật Giao thông 2024</title>
+    <title>Tìm hiểu Luật Giao thông Đường bộ</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div class="audio-indicator" id="audioIndicator">🔇 Nhạc: Tắt</div>
+    
     <div class="container">
         <div id="mainMenu">
             <div class="header">
-                <h1>🚗 Tìm hiểu Luật Giao thông 2024</h1>
-                <p>Ứng dụng học tập và kiểm tra kiến thức theo Luật số 35 & 36/2024/QH15</p>
+                <h1>🚗 Luật Giao thông Đường bộ</h1>
+                <p>Ứng dụng học tập và kiểm tra kiến thức luật giao thông theo Luật số 35/2024/QH15 và 36/2024/QH15</p>
             </div>
 
             <div class="controls">
@@ -31,13 +31,13 @@
                 <div class="nav-item" onclick="showSection('learning')">
                     <span class="icon">🎓</span>
                     <h3>Tìm hiểu</h3>
-                    <p>Học nội dung 2 luật: Đường bộ và Trật tự ATGT</p>
+                    <p>Học các quy định trong 2 luật giao thông đường bộ mới</p>
                 </div>
 
-                <div class="nav-item" onclick="window.open('https://giao-thong-ai-chat.vercel.app/', '_blank')">
+                <div class="nav-item" onclick="openAIChat()">
                     <span class="icon">🤖</span>
                     <h3>Chat AI</h3>
-                    <p>Hỏi đáp với AI về luật giao thông</p>
+                    <p>Hỏi đáp với AI về các quy định luật giao thông</p>
                 </div>
 
                 <div class="nav-item" onclick="showSection('quiz')">
@@ -56,45 +56,111 @@
             <div class="guide-content">
                 <div class="guide-section">
                     <h4>🎯 Mục đích ứng dụng</h4>
-                    <p>Ứng dụng giúp bạn học tập và nắm vững các quy định trong 2 Luật: Luật Đường bộ và Luật Trật tự, An toàn giao thông đường bộ (số 35 & 36/2024/QH15).</p>
+                    <p>Ứng dụng giúp bạn học tập và nắm vững các quy định trong Luật Đường bộ số 35/2024/QH15 và Luật Trật tự, An toàn Giao thông Đường bộ số 36/2024/QH15, hỗ trợ ôn tập cho kỳ thi lý thuyết lái xe và nâng cao ý thức chấp hành luật giao thông.</p>
                 </div>
+                
                 <div class="guide-section">
-                    <h4>📚 Mục "Tìm hiểu"</h4>
-                    <p>Gồm 2 phần: (1) Nội dung Luật Đường bộ, (2) Nội dung Luật Trật tự, ATGT. Bạn có thể đọc từng phần một cách hệ thống, dễ ghi nhớ.</p>
+                    <h4>📚 Cách sử dụng mục "Tìm hiểu"</h4>
+                    <p>Mục này cung cấp kiến thức đầy đủ về 2 luật giao thông mới. Bạn có thể đọc từng chương một cách có hệ thống, ghi chú những điểm quan trọng để ôn tập sau.</p>
                 </div>
+                
                 <div class="guide-section">
-                    <h4>🤖 Chat AI</h4>
-                    <p>Khi nhấn, bạn sẽ được dẫn tới ứng dụng AI để hỏi trực tiếp các câu hỏi luật.</p>
+                    <h4>🤖 Sử dụng Chat AI</h4>
+                    <p>Khi nhấn vào nút "Chat AI", bạn sẽ được chuyển đến ứng dụng hỏi đáp AI chuyên sâu về luật giao thông với nhiều tính năng thông minh.</p>
                 </div>
+                
                 <div class="guide-section">
                     <h4>🧠 Làm bài trắc nghiệm</h4>
-                    <p>100 câu hỏi được chia thành nhiều chủ đề. Chọn đáp án và xem kết quả ngay: đúng (xanh), sai (hồng).</p>
+                    <p>100 câu hỏi được chia thành nhiều chủ đề. Chọn đáp án và xem kết quả ngay lập tức: màu xanh là đúng, màu hồng là sai. Có thể làm lại nhiều lần để ghi nhớ tốt hơn.</p>
+                </div>
+                
+                <div class="guide-section">
+                    <h4>🎵 Điều khiển nhạc nền</h4>
+                    <p>Nhạc nền sẽ tự động bật khi bạn vào ứng dụng. Nhấn nút "Bật/Tắt nhạc" để điều chỉnh. Chỉ báo ở góc trên bên phải sẽ hiển thị trạng thái nhạc hiện tại.</p>
+                </div>
+                
+                <div class="guide-section">
+                    <h4>💡 Mẹo học tập hiệu quả</h4>
+                    <p>1. Đọc kỹ phần "Tìm hiểu" trước khi làm bài trắc nghiệm<br>
+                    2. Sử dụng Chat AI để làm rõ những điểm chưa hiểu<br>
+                    3. Làm bài trắc nghiệm nhiều lần để ghi nhớ lâu<br>
+                    4. Ghi chú những câu trả lời sai để ôn tập lại</p>
                 </div>
             </div>
         </div>
 
         <div class="section" id="learningSection">
             <div class="section-header">
-                <h2 class="section-title">🎓 Tìm hiểu 2 luật giao thông năm 2024</h2>
+                <h2 class="section-title">🎓 Tìm hiểu Luật Giao thông Mới</h2>
                 <button class="back-btn" onclick="showMainMenu()">← Quay lại</button>
             </div>
             <div class="learning-content">
-                <h3>Phần I – Luật số 35/2024/QH15: Luật Đường bộ</h3>
+                <!-- Luật Đường bộ 35/2024/QH15 -->
+                <h2>Luật Đường bộ số 35/2024/QH15</h2>
+                
+                <h3>Chương I: Những quy định chung</h3>
+                <p><strong>Điều 1. Phạm vi điều chỉnh:</strong> Quy định về hệ thống đường bộ; đầu tư, xây dựng, bảo trì, bảo vệ kết cấu hạ tầng giao thông đường bộ; phương tiện tham gia giao thông đường bộ; quản lý nhà nước về đường bộ.</p>
+                
+                <p><strong>Điều 2. Đối tượng áp dụng:</strong> Áp dụng đối với cơ quan, tổ chức, cá nhân trong nước và nước ngoài liên quan đến đường bộ trên lãnh thổ Việt Nam.</p>
+
+                <h3>Chương II: Hệ thống đường bộ</h3>
+                <p>Phân loại đường bộ thành 6 hệ thống: quốc lộ, đường tỉnh, đường huyện, đường xã, đường đô thị và đường chuyên dùng.</p>
+
+                <h3>Chương III: Quản lý, bảo vệ hành lang an toàn đường bộ</h3>
+                <p>Quy định chi tiết về phạm vi hành lang an toàn, các hoạt động bị cấm trong hành lang an toàn đường bộ.</p>
+
+                <h3>Chương IV: Đầu tư, xây dựng, bảo trì kết cấu hạ tầng giao thông đường bộ</h3>
+                <p>Quy định nguyên tắc đầu tư, xây dựng, quản lý chất lượng, bảo trì đường bộ đảm bảo an toàn và hiệu quả.</p>
+
+                <!-- Luật Trật tự ATGT đường bộ 36/2024/QH15 -->
+                <h2>Luật Trật tự, An toàn Giao thông Đường bộ số 36/2024/QH15</h2>
+                
+                <h3>Chương I: Những quy định chung</h3>
+                <p><strong>Điều 1. Phạm vi điều chỉnh:</strong> Quy định về quy tắc giao thông; điều kiện bảo đảm an toàn đối với người, phương tiện; tổ chức giao thông; vận tải đường bộ; xử phạt vi phạm hành chính.</p>
+                
+                <p><strong>Điều 2. Đối tượng áp dụng:</strong> Áp dụng đối với người tham gia giao thông, cơ quan quản lý nhà nước về trật tự an toàn giao thông đường bộ.</p>
+
+                <h3>Chương II: Quy tắc giao thông đường bộ</h3>
+                <p><strong>Nguyên tắc cơ bản:</strong></p>
                 <ul>
-                    <li>Quy định về kết cấu hạ tầng giao thông đường bộ (đường, cầu, hầm...)</li>
-                    <li>Quy định về đầu tư, xây dựng, bảo trì, khai thác đường bộ</li>
-                    <li>Quy định về vận tải đường bộ và dịch vụ hỗ trợ vận tải</li>
-                    <li>Ứng dụng công nghệ trong quản lý giao thông</li>
+                    <li>Người tham gia giao thông phải đi bên phải, đi đúng làn đường</li>
+                    <li>Ưu tiên nhường đường cho xe ưu tiên, người đi bộ</li>
+                    <li>Chấp hành hệ thống báo hiệu đường bộ</li>
+                    <li>Xử lý nghiêm các hành vi vi phạm nồng độ cồn, ma túy</li>
+                    <li>Đội mũ bảo hiểm đạt chuẩn khi đi xe máy</li>
                 </ul>
 
-                <h3>Phần II – Luật số 36/2024/QH15: Luật Trật tự, An toàn Giao thông Đường bộ</h3>
+                <h3>Các điểm mới nổi bật</h3>
+                <p><strong>Về tốc độ:</strong></p>
                 <ul>
-                    <li>Quy tắc giao thông: đi bên phải, nhường đường, tín hiệu đèn...</li>
-                    <li>Quy định về người điều khiển phương tiện (lái xe, bằng lái...)</li>
-                    <li>Giới hạn tốc độ, quy định mũ bảo hiểm, nồng độ cồn</li>
-                    <li>Xử phạt hành chính, tước GPLX, tạm giữ phương tiện</li>
-                    <li>Ứng dụng công nghệ để giám sát và xử phạt</li>
+                    <li>Khu dân cư: 50km/h cho tất cả phương tiện</li>
+                    <li>Đường đôi, đường 1 chiều có dải phân cách: 80-90km/h</li>
+                    <li>Đường cao tốc: 120km/h (ô tô con), 100km/h (xe khách, xe tải)</li>
+                    <li>Cấm xe máy, xe đạp điện trên đường cao tốc</li>
                 </ul>
+
+                <p><strong>Về xử phạt:</strong></p>
+                <ul>
+                    <li>Tăng mạnh phạt nồng độ cồn: 30-40 triệu đồng (ô tô), 6-8 triệu (xe máy)</li>
+                    <li>Phạt dừng, đỗ sai quy định: 800.000 - 1.000.000 đồng</li>
+                    <li>Phạt vượt đèn đỏ: 3-5 triệu (xe máy), 10-12 triệu (ô tô)</li>
+                    <li>Phạt không nhường đường cho xe ưu tiên: 5-7 triệu đồng</li>
+                    <li>Tước giấy phép lái xe từ 2-6 tháng tùy mức độ vi phạm</li>
+                </ul>
+
+                <p><strong>Về quyền ưu tiên:</strong></p>
+                <ul>
+                    <li>Xe chữa cháy, xe quân sự, xe công an làm nhiệm vụ</li>
+                    <li>Xe cứu thương đang vận chuyển cấp cứu</li>
+                    <li>Đoàn xe tang, đoàn xe đặc biệt</li>
+                    <li>Xe hộ đê, xe đi làm nhiệm vụ khắc phục sự cố thiên tai</li>
+                </ul>
+
+                <h3>Chương IV: Vận tải đường bộ</h3>
+                <p>Quy định mới về điều kiện kinh doanh vận tải, trách nhiệm của chủ phương tiện và người lái xe, quy tắc vận chuyển hàng hóa đặc biệt.</p>
+
+                <h3>Chương V: Xử lý vi phạm</h3>
+                <p>Quy định chi tiết về mức phạt, hình thức xử phạt, thẩm quyền xử phạt và biện pháp khắc phục hậu quả.</p>
             </div>
         </div>
 
@@ -105,16 +171,18 @@
             </div>
             <div class="quiz-container">
                 <div class="quiz-header">
-                    <h3>Kiểm tra kiến thức Luật Giao thông 2024</h3>
+                    <h3>Kiểm tra kiến thức Luật Giao thông Đường bộ</h3>
                     <div class="quiz-progress">
                         <span>Câu <span id="currentQuestion">1</span>/<span id="totalQuestions">0</span></span>
                         <span>Điểm: <span id="score">0</span></span>
                     </div>
                 </div>
+                
                 <div class="question-card">
                     <div class="question-text" id="questionText">Đang tải câu hỏi...</div>
                     <div id="answerOptions"></div>
                 </div>
+                
                 <div class="quiz-controls">
                     <button class="quiz-btn" id="prevBtn" onclick="previousQuestion()" disabled>← Câu trước</button>
                     <button class="quiz-btn" onclick="resetQuiz()">🔄 Làm lại</button>
@@ -124,7 +192,7 @@
         </div>
     </div>
 
-    <audio id="backgroundMusic" loop autoplay>
+    <audio id="backgroundMusic" loop>
         <source src="nhac.mp3" type="audio/mpeg">
         Trình duyệt của bạn không hỗ trợ audio HTML5.
     </audio>
